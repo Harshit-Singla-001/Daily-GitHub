@@ -1,0 +1,15 @@
+Artificial Intelligence is a branch of computer science that focuses on creating systems capable of performing tasks that normally require human intelligence.
+
+Machine learning is a subset of artificial intelligence. It allows computers to learn patterns from data instead of being explicitly programmed for every task.
+
+Deep learning is a subset of machine learning that uses neural networks with multiple layers.
+
+Natural language processing allows computers to understand, process and generate human language.
+
+Computer vision focuses on enabling computers to understand and analyze images and videos.
+
+Generative AI refers to artificial intelligence systems that can generate new content such as text, images, audio and code.
+
+Large language models are machine learning models trained on large amounts of text. They can understand and generate natural language.
+
+Transformers are neural network architectures that use attention mechanisms to process relationships between different parts of an input sequence.
