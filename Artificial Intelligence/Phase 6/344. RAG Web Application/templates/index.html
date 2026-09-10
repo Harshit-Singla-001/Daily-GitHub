@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>RAG Document Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="badge">RAG AI</div>
+
+        <h1>Document Assistant</h1>
+
+        <p>
+            Upload a document and ask questions
+            using AI-powered semantic search.
+        </p>
+    </header>
+
+
+    <main>
+
+        <section class="card">
+
+            <h2>Upload Document</h2>
+
+            <p class="subtitle">
+                TXT, PDF, DOCX and CSV files
+            </p>
+
+
+            <form
+                id="uploadForm"
+                enctype="multipart/form-data"
+            >
+
+                <label
+                    for="document"
+                    class="drop-zone"
+                    id="dropZone"
+                >
+
+                    <div class="upload-icon">
+                        ↑
+                    </div>
+
+                    <h3>
+                        Drag & Drop your document
+                    </h3>
+
+                    <p>
+                        or click to browse
+                    </p>
+
+                    <span>
+                        Maximum size: 10 MB
+                    </span>
+
+                    <input
+                        type="file"
+                        id="document"
+                        name="document"
+                        accept=".txt,.pdf,.docx,.csv"
+                        hidden
+                    >
+
+                </label>
+
+
+                <div
+                    class="selected-file"
+                    id="selectedFile"
+                >
+                    No file selected
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="uploadBtn"
+                >
+                    Process Document
+                </button>
+
+            </form>
+
+
+            <div
+                class="loading"
+                id="uploadLoading"
+            >
+                Processing document...
+            </div>
+
+
+            <div
+                class="message"
+                id="uploadMessage"
+            ></div>
+
+        </section>
+
+
+        <section class="card">
+
+            <div class="document-status">
+
+                <div>
+                    <span class="label">
+                        CURRENT DOCUMENT
+                    </span>
+
+                    <h2 id="documentName">
+                        No document loaded
+                    </h2>
+                </div>
+
+                <span
+                    class="status"
+                    id="status"
+                >
+                    Not Ready
+                </span>
+
+            </div>
+
+
+            <div class="chunk-info">
+
+                <span>
+                    Chunks
+                </span>
+
+                <strong id="chunkCount">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="card">
+
+            <h2>Ask a Question</h2>
+
+            <p class="subtitle">
+                Ask something about your uploaded document.
+            </p>
+
+
+            <form id="questionForm">
+
+                <textarea
+                    id="question"
+                    placeholder="Example: What is this document about?"
+                    rows="4"
+                ></textarea>
+
+
+                <button
+                    type="submit"
+                    id="askBtn"
+                >
+                    Ask AI
+                </button>
+
+            </form>
+
+
+            <div
+                class="loading"
+                id="questionLoading"
+            >
+                Searching document and generating answer...
+            </div>
+
+
+            <div
+                class="answer"
+                id="answer"
+            ></div>
+
+
+            <div
+                class="message"
+                id="questionMessage"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        Flask + Gemini + FAISS + RAG
+    </footer>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+Flask
+google-genai
+python-dotenv
+numpy
+faiss-cpu
+pypdf
+python-docx
+pandas

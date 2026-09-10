@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+.container {
+    width: 92%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+header h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-bottom: 22px;
+}
+
+.drop-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 230px;
+    padding: 30px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 14px;
+    background: #f8fafc;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.drop-zone:hover,
+.drop-zone.dragging {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.upload-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #2563eb;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.drop-zone p {
+    color: #6b7280;
+    margin: 8px 0;
+}
+
+.drop-zone span {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+.selected-file {
+    margin: 18px 0;
+    padding: 14px;
+    background: #f8fafc;
+    border-radius: 10px;
+    color: #6b7280;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.document-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.label {
+    display: block;
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.status {
+    padding: 8px 13px;
+    border-radius: 20px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.status.ready {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.chunk-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.chunk-info span {
+    color: #6b7280;
+}
+
+.chunk-info strong {
+    font-size: 20px;
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 15px;
+    font: inherit;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+textarea:focus {
+    border-color: #2563eb;
+}
+
+.loading {
+    display: none;
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.message {
+    margin-top: 15px;
+    padding: 13px;
+    border-radius: 10px;
+    display: none;
+}
+
+.message.show {
+    display: block;
+}
+
+.message.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.message.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.answer {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.answer.show {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 13px;
+    padding: 10px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .document-status {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .drop-zone {
+        min-height: 200px;
+    }
+}
