@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+.container {
+    width: min(950px, 92%);
+    margin: 40px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #6b7280;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+input[type="file"] {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+button {
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button.danger {
+    background: #dc2626;
+}
+
+.document {
+    display: inline-block;
+    background: #eef2ff;
+    padding: 7px 11px;
+    border-radius: 20px;
+    margin: 4px;
+    font-size: 14px;
+}
+
+.chunk-info {
+    color: #6b7280;
+}
+
+.answer {
+    margin-top: 20px;
+    padding: 18px;
+    background: #f8fafc;
+    border-radius: 10px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.sources {
+    margin-top: 18px;
+}
+
+.source {
+    background: #f3f4f6;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+}
+
+#uploadStatus {
+    margin-top: 12px;
+}
+
+#loading {
+    margin-top: 15px;
+    color: #6b7280;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Advanced RAG</title>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced RAG</h1>
+            <p>
+                Ask questions from your uploaded documents
+            </p>
+        </header>
+
+        <section class="card">
+            <h2>Upload Documents</h2>
+
+            <input
+                type="file"
+                id="fileInput"
+                multiple
+                accept=".txt,.pdf,.docx,.csv"
+            >
+
+            <button
+                id="uploadBtn"
+                type="button"
+            >
+                Upload & Index
+            </button>
+
+            <div id="uploadStatus"></div>
+        </section>
+
+        <section class="card">
+            <h2>Indexed Documents</h2>
+
+            <div id="documents">
+                {% if documents %}
+                    {% for document in documents %}
+                        <span class="document">
+                            {{ document }}
+                        </span>
+                    {% endfor %}
+                {% else %}
+                    <p>No documents indexed.</p>
+                {% endif %}
+            </div>
+
+            <p class="chunk-info">
+                Indexed chunks:
+                <strong id="chunkCount">
+                    {{ chunk_count }}
+                </strong>
+            </p>
+
+            <button
+                id="clearBtn"
+                class="danger"
+                type="button"
+            >
+                Clear Documents
+            </button>
+        </section>
+
+        <section class="card">
+            <h2>Ask a Question</h2>
+
+            <textarea
+                id="question"
+                placeholder="Ask something about your documents..."
+                rows="4"
+            ></textarea>
+
+            <button
+                id="askBtn"
+                type="button"
+            >
+                Ask
+            </button>
+
+            <div
+                id="loading"
+                class="hidden"
+            >
+                Searching documents...
+            </div>
+
+            <div
+                id="answer"
+                class="answer"
+            ></div>
+
+            <div
+                id="sources"
+                class="sources"
+            ></div>
+        </section>
+    </div>
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+</body>
+</html>
