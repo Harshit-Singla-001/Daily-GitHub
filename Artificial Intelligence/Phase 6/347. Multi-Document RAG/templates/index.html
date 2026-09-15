@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Multi-Document RAG</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <span class="badge">
+            MULTI-DOCUMENT RAG
+        </span>
+
+        <h1>
+            AI Document Assistant
+        </h1>
+
+        <p>
+            Upload multiple documents and ask
+            questions across all of them.
+        </p>
+    </header>
+
+
+    <main>
+
+        <section class="card">
+
+            <h2>
+                Upload Documents
+            </h2>
+
+            <p class="subtitle">
+                TXT, PDF, DOCX and CSV ·
+                Maximum {{ 10 }} documents
+            </p>
+
+
+            <form
+                action="{{ url_for('ask') }}"
+                method="POST"
+                enctype="multipart/form-data"
+                id="ragForm"
+            >
+
+                <label
+                    for="documents"
+                    class="drop-zone"
+                    id="dropZone"
+                >
+
+                    <div class="upload-icon">
+                        +
+                    </div>
+
+                    <h3>
+                        Select multiple documents
+                    </h3>
+
+                    <p>
+                        Click here or drag files into this area
+                    </p>
+
+                    <span>
+                        TXT · PDF · DOCX · CSV
+                    </span>
+
+                    <input
+                        type="file"
+                        id="documents"
+                        name="documents"
+                        multiple
+                        accept=".txt,.pdf,.docx,.csv"
+                        hidden
+                    >
+
+                </label>
+
+
+                <div
+                    id="fileList"
+                    class="file-list"
+                ></div>
+
+
+                <label for="question">
+                    Your Question
+                </label>
+
+                <textarea
+                    id="question"
+                    name="question"
+                    rows="5"
+                    placeholder="Ask something about your documents..."
+                    required
+                >{{ question or "" }}</textarea>
+
+
+                <div class="button-group">
+
+                    <button
+                        type="submit"
+                        id="askButton"
+                    >
+                        <span id="buttonText">
+                            Ask AI
+                        </span>
+
+                        <span
+                            id="loader"
+                            class="loader"
+                        ></span>
+                    </button>
+
+                    <button
+                        type="button"
+                        id="resetButton"
+                        class="reset"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        {% if error %}
+
+        <section class="error">
+            <strong>Error</strong>
+            <span>{{ error }}</span>
+        </section>
+
+        {% endif %}
+
+
+        {% if answer %}
+
+        <section class="card">
+
+            <span class="result-label">
+                AI ANSWER
+            </span>
+
+            <div class="answer">
+                {{ answer }}
+            </div>
+
+        </section>
+
+
+        {% if sources %}
+
+        <section class="card">
+
+            <h2>
+                Retrieved Sources
+            </h2>
+
+            <div class="sources">
+
+                {% for source in sources %}
+
+                <div class="source">
+
+                    <strong>
+                        {{ source.document }}
+                    </strong>
+
+                    {% if source.page %}
+                    <span>
+                        Page {{ source.page }}
+                    </span>
+                    {% endif %}
+
+                    <span>
+                        Similarity:
+                        {{ source.score }}
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+        {% endif %}
+
+
+        {% if documents %}
+
+        <section class="card">
+
+            <h2>
+                Uploaded Documents
+            </h2>
+
+            <ul class="documents">
+
+                {% for document in documents %}
+
+                <li>
+                    {{ document }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+
+    <footer>
+        Day 347 · Multi-Document RAG
+    </footer>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+
+</html>
