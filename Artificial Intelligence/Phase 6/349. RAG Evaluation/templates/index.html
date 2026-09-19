@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Evaluation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>RAG Evaluation System</h1>
+        <p>Evaluate retrieval quality, relevance and hallucinations.</p>
+    </header>
+
+    <section class="card">
+        <h2>Upload Documents</h2>
+
+        <input
+            type="file"
+            id="fileInput"
+            multiple
+            accept=".txt,.pdf,.docx,.csv"
+        >
+
+        <button id="uploadBtn">Upload & Index</button>
+
+        <p id="uploadStatus"></p>
+    </section>
+
+    <section class="card">
+        <h2>Indexed Documents</h2>
+
+        <div id="documents">
+            {% if documents %}
+                {% for document in documents %}
+                    <span class="document">{{ document }}</span>
+                {% endfor %}
+            {% else %}
+                <p>No documents indexed.</p>
+            {% endif %}
+        </div>
+
+        <p class="chunk-info">
+            Total chunks:
+            <strong id="chunkCount">{{ chunk_count }}</strong>
+        </p>
+
+        <button id="clearBtn" class="danger">
+            Clear Documents
+        </button>
+    </section>
+
+    <section class="card">
+        <h2>Ask Question</h2>
+
+        <textarea
+            id="question"
+            placeholder="Ask something about your documents..."
+        ></textarea>
+
+        <button id="askBtn">Ask</button>
+
+        <div id="loading" class="hidden">
+            Searching documents and generating answer...
+        </div>
+
+        <div id="answer" class="answer"></div>
+
+        <div id="sources" class="sources"></div>
+    </section>
+
+    <section class="card evaluation-card">
+        <h2>RAG Evaluation</h2>
+
+        <p>
+            Run the predefined test questions and evaluate the RAG system.
+        </p>
+
+        <button id="evaluateBtn">
+            Run Evaluation
+        </button>
+
+        <div id="evaluationLoading" class="hidden">
+            Running evaluation tests...
+        </div>
+
+        <div id="summary"></div>
+
+        <div id="evaluationResults"></div>
+    </section>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

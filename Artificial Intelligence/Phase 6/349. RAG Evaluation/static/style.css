@@ -1,0 +1,268 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.container {
+    width: min(1100px, 94%);
+    margin: 35px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+    font-size: 36px;
+}
+
+header p {
+    margin: 0;
+    color: #64748b;
+}
+
+.card {
+    background: white;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    margin: 0 0 18px;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 14px;
+    margin-bottom: 14px;
+    resize: vertical;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+button.danger {
+    background: #dc2626;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#uploadStatus {
+    margin-top: 14px;
+    color: #475569;
+}
+
+#documents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.document {
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 14px;
+}
+
+.chunk-info {
+    color: #64748b;
+}
+
+.answer {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.answer h3 {
+    margin-top: 0;
+}
+
+.sources {
+    margin-top: 24px;
+}
+
+.source-reference {
+    display: inline-block;
+    margin: 0 3px;
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.source-card {
+    padding: 16px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.source-card.highlight {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.source-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.source-detail {
+    margin-top: 6px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.metric {
+    padding: 18px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.metric strong {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.metric span {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.evaluation-result {
+    margin-top: 14px;
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.result-header span {
+    font-weight: bold;
+}
+
+.result-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+}
+
+.result-metrics span {
+    padding: 6px 10px;
+    background: #e2e8f0;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.error {
+    color: #dc2626;
+}
+
+@media (max-width: 800px) {
+    .metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        width: 100%;
+    }
+}

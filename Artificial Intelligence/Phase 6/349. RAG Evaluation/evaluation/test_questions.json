@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "question": "What is machine learning?",
+    "expected_keywords": [
+      "machine learning"
+    ],
+    "expected_documents": [
+      "machine_learning.txt"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What are the types of machine learning?",
+    "expected_keywords": [
+      "supervised",
+      "unsupervised",
+      "reinforcement"
+    ],
+    "expected_documents": [
+      "machine_learning.txt"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is supervised learning?",
+    "expected_keywords": [
+      "supervised learning"
+    ],
+    "expected_documents": [
+      "machine_learning.txt"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is the capital of France?",
+    "expected_keywords": [
+      "paris"
+    ],
+    "expected_documents": []
+  }
+]
