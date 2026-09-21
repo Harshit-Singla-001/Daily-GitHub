@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI + SQL Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI + SQL Assistant</h1>
+            <p>Ask questions about your database using natural language.</p>
+        </header>
+
+        <section class="card">
+            <h2>Database Tables</h2>
+            <p class="description">
+                Select a table to quickly view its data.
+            </p>
+
+            <div class="table-buttons">
+                <button class="table-btn" data-query="Show all customers">
+                    Customers
+                </button>
+
+                <button class="table-btn" data-query="Show all products">
+                    Products
+                </button>
+
+                <button class="table-btn" data-query="Show all orders">
+                    Orders
+                </button>
+
+                <button class="table-btn" data-query="Show all order items">
+                    Order Items
+                </button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Ask the Database</h2>
+
+            <textarea
+                id="question"
+                placeholder="Example: Show all customers from Punjab"
+            ></textarea>
+
+            <button id="askBtn">Ask</button>
+
+            <div id="loading" class="hidden">
+                Processing your request...
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Generated SQL</h2>
+
+            <pre id="sqlOutput">No SQL query generated yet.</pre>
+        </section>
+
+        <section class="card">
+            <h2>Query Result</h2>
+
+            <div id="result">
+                <p>No results yet.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Database Information</h2>
+
+            <div id="databaseInfo">
+                <p>
+                    The assistant currently uses a read-only SQLite database.
+                </p>
+
+                <p>
+                    <strong>Available Tables:</strong>
+                </p>
+
+                <ul>
+                    <li>Customers</li>
+                    <li>Products</li>
+                    <li>Orders</li>
+                    <li>Order Items</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
