@@ -10,7 +10,7 @@ initialize_database()
 @app.route("/")
 def index():
     return render_template("index.html")
-
+ 
 @app.route("/ask", methods=["POST"])
 def ask():
     data = request.get_json(silent=True) or {}
