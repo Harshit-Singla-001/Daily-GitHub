@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Tool Calling Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>AI Tool Calling Assistant</h1>
+        <p>Gemini + Python Tools</p>
+    </header>
+
+    <section class="card">
+
+        <h2>Available Tools</h2>
+
+        <div class="tools">
+
+            <div class="tool">
+                <h3>🧮 Calculator</h3>
+                <p>Perform mathematical calculations.</p>
+            </div>
+
+            <div class="tool">
+                <h3>🗄️ Database Search</h3>
+                <p>Search customers, products and orders.</p>
+            </div>
+
+            <div class="tool">
+                <h3>📄 File Search</h3>
+                <p>Search information inside local files.</p>
+            </div>
+
+            <div class="tool">
+                <h3>📋 Table List</h3>
+                <p>View available database tables.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Ask the AI</h2>
+
+        <textarea
+            id="question"
+            placeholder="Examples:
+Calculate 125 * 48
+Show me all customers
+What is machine learning?
+Which database tables are available?"
+        ></textarea>
+
+        <button id="askBtn">
+            Ask
+        </button>
+
+        <div id="loading" class="hidden">
+            AI is processing your request...
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Tool Used</h2>
+
+        <div id="toolUsed">
+            No tool used yet.
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>AI Response</h2>
+
+        <div id="answer">
+            No response yet.
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Tool Result</h2>
+
+        <pre id="toolResult">
+No tool result yet.
+        </pre>
+
+    </section>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
