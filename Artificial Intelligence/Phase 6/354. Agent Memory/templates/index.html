@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Memory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🧠 Agent Memory</h1>
+        <p>AI Agent with Short-Term and Persistent Memory</p>
+    </header>
+
+    <section class="card">
+        <label>User ID</label>
+        <input
+            type="text"
+            id="userId"
+            value="user_001"
+            placeholder="Enter user ID"
+        >
+    </section>
+
+    <section class="card">
+        <h2>Ask Agent</h2>
+
+        <textarea
+            id="message"
+            placeholder="Ask something..."
+            rows="4"
+        ></textarea>
+
+        <button id="askButton">Ask Agent</button>
+
+        <div id="status"></div>
+    </section>
+
+    <section class="card">
+        <h2>Agent Response</h2>
+        <div id="answer" class="answer">
+            No response yet.
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Agent Steps</h2>
+        <div id="steps">
+            No tool calls yet.
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Memory</h2>
+
+        <div class="memory-buttons">
+            <button id="loadMemoryButton">
+                Load Memory
+            </button>
+
+            <button id="clearShortTermButton">
+                Clear Short-Term
+            </button>
+
+            <button id="clearAllButton">
+                Clear All Memory
+            </button>
+        </div>
+
+        <div id="memoryOutput">
+            Memory not loaded.
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Save Persistent Memory</h2>
+
+        <input
+            type="text"
+            id="memoryKey"
+            placeholder="Memory key e.g. favorite_language"
+        >
+
+        <input
+            type="text"
+            id="memoryValue"
+            placeholder="Memory value e.g. Python"
+        >
+
+        <button id="saveMemoryButton">
+            Save Memory
+        </button>
+
+        <div id="saveStatus"></div>
+    </section>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
