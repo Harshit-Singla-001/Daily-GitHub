@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Workflow</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>AI Workflow</h1>
+        <p>Classify → Process → Validate → Generate</p>
+    </header>
+
+    <section class="card">
+
+        <h2>AI Workflow Pipeline</h2>
+
+        <div class="pipeline">
+
+            <div class="stage">
+                <span>1</span>
+                <strong>Classify</strong>
+                <small>Identify request type</small>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="stage">
+                <span>2</span>
+                <strong>Process</strong>
+                <small>Process the request</small>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="stage">
+                <span>3</span>
+                <strong>Validate</strong>
+                <small>Check the result</small>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="stage">
+                <span>4</span>
+                <strong>Generate</strong>
+                <small>Create final answer</small>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Ask the AI</h2>
+
+        <textarea
+            id="question"
+            placeholder="Try:
+Calculate 125 * 48
+Show all customers
+What is machine learning?
+Explain supervised learning"
+        ></textarea>
+
+        <button id="askBtn">
+            Run Workflow
+        </button>
+
+        <div id="loading" class="hidden">
+            Running AI workflow...
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Classification</h2>
+
+        <div id="category">
+            Waiting for request...
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Workflow Status</h2>
+
+        <div id="workflow">
+            No workflow executed yet.
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Final Response</h2>
+
+        <div id="answer">
+            No response yet.
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Processed Data</h2>
+
+        <pre id="processedData">No processed data.</pre>
+
+    </section>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
