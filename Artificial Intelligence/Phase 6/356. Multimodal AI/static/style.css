@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.container {
+    width: min(1000px, 92%);
+    margin: 40px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.drop-area {
+    border: 2px dashed #94a3b8;
+    border-radius: 12px;
+    padding: 45px 20px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.drop-area.dragging {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.upload-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.drop-area p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.drop-area span {
+    display: block;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+.upload-button {
+    display: inline-block;
+    padding: 11px 20px;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.drop-area small {
+    display: block;
+    margin-top: 18px;
+    color: #64748b;
+}
+
+.preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.preview-container img {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.image-info {
+    margin-top: 15px;
+    line-height: 1.8;
+    color: #475569;
+}
+
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.quick-prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 18px;
+}
+
+.quick-prompt {
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+    padding: 8px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.quick-prompt:hover {
+    background: #e2e8f0;
+}
+
+.analyze-button {
+    width: 100%;
+    border: none;
+    padding: 13px;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.analyze-button:hover {
+    opacity: 0.9;
+}
+
+.analyze-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.status {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.status.success {
+    color: #16a34a;
+}
+
+.status.error {
+    color: #dc2626;
+}
+
+.status.loading {
+    color: #d97706;
+}
+
+.analysis {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.7;
+    font-size: 16px;
+    color: #1e293b;
+}
+
+.analysis h2,
+.analysis h3,
+.analysis h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+.analysis h2:first-child,
+.analysis h3:first-child,
+.analysis h4:first-child {
+    margin-top: 0;
+}
+
+.analysis p {
+    margin: 0 0 14px;
+}
+
+.analysis ul,
+.analysis ol {
+    margin: 10px 0 16px 25px;
+    padding-left: 20px;
+}
+
+.analysis li {
+    margin-bottom: 8px;
+}
+
+.analysis strong {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.analysis em {
+    font-style: italic;
+}
+
+.analysis code {
+    background: #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+}
+
+.analysis hr {
+    border: 0;
+    border-top: 1px solid #cbd5e1;
+    margin: 18px 0;
+}
+
+.examples {
+    line-height: 2;
+    padding-left: 22px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .drop-area {
+        padding: 30px 15px;
+    }
+
+    .quick-prompts {
+        flex-direction: column;
+    }
+
+    .quick-prompt {
+        width: 100%;
+    }
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Multimodal AI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>🖼️ Multimodal AI</h1>
+        <p>
+            Upload an image and let AI understand it
+        </p>
+    </header>
+
+
+    <section class="card">
+
+        <h2>Upload Image</h2>
+
+        <div
+            id="dropArea"
+            class="drop-area"
+        >
+
+            <div class="upload-icon">
+                🖼️
+            </div>
+
+            <p>
+                Drag & drop your image here
+            </p>
+
+            <span>
+                or
+            </span>
+
+            <label
+                for="imageInput"
+                class="upload-button"
+            >
+                Choose Image
+            </label>
+
+            <input
+                type="file"
+                id="imageInput"
+                accept=".jpg,.jpeg,.png,.webp"
+                hidden
+            >
+
+            <small>
+                JPG, JPEG, PNG, WEBP • Maximum 5 MB
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <section
+        id="previewSection"
+        class="card hidden"
+    >
+
+        <h2>Image Preview</h2>
+
+        <div class="preview-container">
+
+            <img
+                id="previewImage"
+                alt="Selected image"
+            >
+
+        </div>
+
+        <div
+            id="imageInfo"
+            class="image-info"
+        ></div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Ask About Image</h2>
+
+        <textarea
+            id="prompt"
+            rows="4"
+            placeholder="Example: Describe everything visible in this image."
+        ></textarea>
+
+        <div class="quick-prompts">
+
+            <button
+                class="quick-prompt"
+                data-prompt="Describe this image in detail."
+            >
+                Describe Image
+            </button>
+
+            <button
+                class="quick-prompt"
+                data-prompt="What objects can you identify in this image?"
+            >
+                Identify Objects
+            </button>
+
+            <button
+                class="quick-prompt"
+                data-prompt="Read and explain any visible text in this image."
+            >
+                Read Text
+            </button>
+
+            <button
+                class="quick-prompt"
+                data-prompt="Explain what is happening in this image."
+            >
+                Explain Scene
+            </button>
+
+        </div>
+
+        <button
+            id="analyzeButton"
+            class="analyze-button"
+        >
+            Analyze Image
+        </button>
+
+        <div
+            id="status"
+            class="status"
+        ></div>
+
+    </section>
+
+
+    <section
+        id="resultSection"
+        class="card hidden"
+    >
+
+        <h2>🤖 AI Analysis</h2>
+
+        <div
+            id="analysis"
+            class="analysis"
+        ></div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Example Questions</h2>
+
+        <ul class="examples">
+
+            <li>
+                What objects are visible?
+            </li>
+
+            <li>
+                What is the main subject of this image?
+            </li>
+
+            <li>
+                Can you read the text in this image?
+            </li>
+
+            <li>
+                Describe the scene.
+            </li>
+
+            <li>
+                What colors are dominant?
+            </li>
+
+            <li>
+                Explain this diagram.
+            </li>
+
+        </ul>
+
+    </section>
+
+</div>
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>
