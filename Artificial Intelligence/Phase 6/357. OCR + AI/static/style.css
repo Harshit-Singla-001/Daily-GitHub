@@ -1,0 +1,413 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.container {
+    width: min(1050px, 92%);
+    margin: 35px auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.title-icon {
+    font-size: 45px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 7px 0 0;
+    color: #64748b;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.drop-area {
+    border: 2px dashed #94a3b8;
+    border-radius: 12px;
+    padding: 45px 20px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.drop-area.dragging {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.upload-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.drop-area p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.drop-area span {
+    display: block;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+.upload-button {
+    display: inline-block;
+    padding: 11px 20px;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.drop-area small {
+    display: block;
+    margin-top: 18px;
+    color: #64748b;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    padding: 13px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.file-icon {
+    font-size: 30px;
+}
+
+.file-info span {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #e2e8f0;
+    color: #475569;
+    font-size: 13px;
+}
+
+.status {
+    min-height: 22px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.status.success {
+    color: #16a34a;
+}
+
+.status.error {
+    color: #dc2626;
+}
+
+.status.loading {
+    color: #d97706;
+}
+
+.extracted-text {
+    width: 100%;
+    min-height: 300px;
+    resize: vertical;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.statistics {
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.stat {
+    background: #f8fafc;
+    border-radius: 9px;
+    padding: 12px;
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+    font-size: 22px;
+}
+
+.stat span {
+    color: #64748b;
+    font-size: 13px;
+}
+
+textarea {
+    font-family: inherit;
+}
+
+#prompt {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    resize: vertical;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.action-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.primary-button,
+.secondary-button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.primary-button {
+    background: #2563eb;
+    color: white;
+}
+
+.secondary-button {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+    opacity: 0.9;
+}
+
+.primary-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.full-button {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.quick-prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.quick-prompt {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #f8fafc;
+    color: #334155;
+    cursor: pointer;
+}
+
+.quick-prompt:hover {
+    background: #e2e8f0;
+}
+
+.analysis {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.7;
+    font-size: 16px;
+    color: #1e293b;
+}
+
+.analysis h2,
+.analysis h3,
+.analysis h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+.analysis h2:first-child,
+.analysis h3:first-child,
+.analysis h4:first-child {
+    margin-top: 0;
+}
+
+.analysis p {
+    margin: 0 0 14px;
+}
+
+.analysis ul,
+.analysis ol {
+    margin: 10px 0 16px 25px;
+    padding-left: 20px;
+}
+
+.analysis li {
+    margin-bottom: 8px;
+}
+
+.analysis strong {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.analysis em {
+    font-style: italic;
+}
+
+.analysis code {
+    background: #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+}
+
+.analysis hr {
+    border: 0;
+    border-top: 1px solid #cbd5e1;
+    margin: 18px 0;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, 1fr);
+    gap: 15px;
+}
+
+.action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+    cursor: pointer;
+    text-align: left;
+}
+
+.action-card span {
+    font-size: 28px;
+}
+
+.action-card strong {
+    font-size: 15px;
+}
+
+.action-card small {
+    color: #64748b;
+}
+
+.action-card:hover {
+    background: #f1f5f9;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    .statistics {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-row {
+        flex-direction: column;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+    }
+
+    .quick-prompts {
+        flex-direction: column;
+    }
+
+    .quick-prompt {
+        width: 100%;
+    }
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>OCR + AI Document Analyzer</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="title-icon">
+            📄
+        </div>
+
+        <div>
+            <h1>OCR + AI Analyzer</h1>
+
+            <p>
+                Extract text from documents and
+                analyze it with AI
+            </p>
+        </div>
+    </header>
+
+
+    <!-- Upload -->
+
+    <section class="card">
+
+        <h2>1. Upload Document</h2>
+
+        <div
+            id="dropArea"
+            class="drop-area"
+        >
+
+            <div class="upload-icon">
+                📤
+            </div>
+
+            <p>
+                Drag & drop your document here
+            </p>
+
+            <span>
+                or
+            </span>
+
+            <label
+                for="fileInput"
+                class="upload-button"
+            >
+                Choose File
+            </label>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept=".jpg,.jpeg,.png,.webp,.pdf,.docx,.txt"
+                hidden
+            >
+
+            <small>
+                JPG, PNG, WEBP, PDF, DOCX, TXT
+                • Maximum 10 MB
+            </small>
+
+        </div>
+
+        <div
+            id="fileInfo"
+            class="file-info hidden"
+        ></div>
+
+    </section>
+
+
+    <!-- Extraction -->
+
+    <section class="card">
+
+        <div class="section-heading">
+
+            <h2>2. Extracted Text</h2>
+
+            <span
+                id="extractionMethod"
+                class="badge"
+            >
+                Waiting
+            </span>
+
+        </div>
+
+        <div
+            id="extractionStatus"
+            class="status"
+        ></div>
+
+        <div
+            id="statistics"
+            class="statistics hidden"
+        ></div>
+
+        <textarea
+            id="extractedText"
+            class="extracted-text"
+            placeholder="Extracted text will appear here..."
+        ></textarea>
+
+        <div class="action-row">
+
+            <button
+                id="extractButton"
+                class="primary-button"
+            >
+                🔍 Extract Text
+            </button>
+
+            <button
+                id="clearTextButton"
+                class="secondary-button"
+            >
+                Clear
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI -->
+
+    <section class="card">
+
+        <h2>3. Ask AI About Document</h2>
+
+        <textarea
+            id="prompt"
+            rows="4"
+            placeholder="Example: Summarize this document and list the most important points."
+        ></textarea>
+
+
+        <div class="quick-prompts">
+
+            <button
+                class="quick-prompt"
+                data-prompt="Summarize this document and give the most important points."
+            >
+                📝 Summarize
+            </button>
+
+            <button
+                class="quick-prompt"
+                data-prompt="Extract all important names, dates, numbers and facts from this document."
+            >
+                📊 Key Information
+            </button>
+
+            <button
+                class="quick-prompt"
+                data-prompt="Explain this document in simple language."
+            >
+                💡 Explain Simply
+            </button>
+
+            <button
+                class="quick-prompt"
+                data-prompt="Create a detailed bullet-point summary of this document."
+            >
+                📌 Bullet Summary
+            </button>
+
+        </div>
+
+
+        <button
+            id="analyzeButton"
+            class="primary-button full-button"
+        >
+            🤖 Analyze with AI
+        </button>
+
+        <div
+            id="aiStatus"
+            class="status"
+        ></div>
+
+    </section>
+
+
+    <!-- AI Result -->
+
+    <section
+        id="resultSection"
+        class="card hidden"
+    >
+
+        <h2>🤖 AI Analysis</h2>
+
+        <div
+            id="analysis"
+            class="analysis"
+        ></div>
+
+    </section>
+
+
+    <!-- Quick actions -->
+
+    <section class="card">
+
+        <h2>⚡ Quick AI Actions</h2>
+
+        <div class="action-grid">
+
+            <button
+                id="summaryButton"
+                class="action-card"
+            >
+                <span>📝</span>
+                <strong>Generate Summary</strong>
+                <small>
+                    Create a concise document summary
+                </small>
+            </button>
+
+            <button
+                id="keyInfoButton"
+                class="action-card"
+            >
+                <span>🔑</span>
+                <strong>Key Information</strong>
+                <small>
+                    Extract names, dates and numbers
+                </small>
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>
