@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Image Generator</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="header">
+
+        <div class="header-icon">
+            🎨
+        </div>
+
+        <div>
+            <h1>AI Image Generator</h1>
+
+            <p>
+                Turn your imagination into an image
+                using generative AI.
+            </p>
+        </div>
+
+    </header>
+
+
+    <section class="card">
+
+        <h2>Describe Your Image</h2>
+
+        <textarea
+            id="prompt"
+            rows="6"
+            maxlength="4000"
+            placeholder="Example: A futuristic city at night with flying cars, neon lights, cinematic lighting, highly detailed"
+        ></textarea>
+
+
+        <div class="prompt-footer">
+
+            <span id="characterCount">
+                0 / 4000
+            </span>
+
+            <button
+                id="generateButton"
+                class="generate-button"
+            >
+                ✨ Generate Image
+            </button>
+
+        </div>
+
+
+        <div class="examples">
+
+            <p>Try an example:</p>
+
+            <button
+                class="example-button"
+                data-prompt="A small robot sitting in a cozy library, reading a book, warm cinematic lighting, highly detailed digital art"
+            >
+                🤖 Robot in Library
+            </button>
+
+            <button
+                class="example-button"
+                data-prompt="A futuristic city at night with flying cars, neon lights, rain reflections, cinematic photography"
+            >
+                🌃 Futuristic City
+            </button>
+
+            <button
+                class="example-button"
+                data-prompt="A peaceful mountain lake at sunrise, snow-covered mountains, mist over the water, realistic landscape photography"
+            >
+                🏔️ Mountain Lake
+            </button>
+
+            <button
+                class="example-button"
+                data-prompt="A cute orange cat astronaut floating in space near Earth, colorful planets in the background, children's storybook illustration"
+            >
+                🐱 Cat Astronaut
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <div
+        id="status"
+        class="status"
+    ></div>
+
+
+    <section
+        id="resultSection"
+        class="card result-card hidden"
+    >
+
+        <div class="result-header">
+
+            <div>
+                <h2>Generated Image</h2>
+
+                <p id="resultPrompt"></p>
+            </div>
+
+            <span class="ai-badge">
+                AI Generated
+            </span>
+
+        </div>
+
+
+        <!-- Small contained preview -->
+
+        <div class="image-preview-container">
+
+            <img
+                id="generatedImage"
+                class="generated-image"
+                alt="AI generated image"
+            >
+
+        </div>
+
+
+        <div class="image-actions">
+
+            <a
+                id="downloadButton"
+                class="download-button"
+                href="#"
+                download="ai-generated-image.png"
+            >
+                ⬇️ Download Image
+            </a>
+
+            <button
+                id="regenerateButton"
+                class="secondary-button"
+            >
+                🔄 Generate Again
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="card tips">
+
+        <h2>💡 Prompt Tips</h2>
+
+        <div class="tips-grid">
+
+            <div>
+                <strong>Subject</strong>
+                <p>
+                    Describe what you want to see.
+                </p>
+            </div>
+
+            <div>
+                <strong>Style</strong>
+                <p>
+                    Mention realistic, cartoon,
+                    cinematic, watercolor, etc.
+                </p>
+            </div>
+
+            <div>
+                <strong>Lighting</strong>
+                <p>
+                    Add words like sunset,
+                    studio lighting or neon.
+                </p>
+            </div>
+
+            <div>
+                <strong>Details</strong>
+                <p>
+                    Add colors, environment,
+                    composition and mood.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>

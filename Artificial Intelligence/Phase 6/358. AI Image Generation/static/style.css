@@ -1,0 +1,335 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.container {
+    width: min(1000px, 92%);
+    margin: 35px auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.header-icon {
+    font-size: 46px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header p {
+    margin: 7px 0 0;
+    color: #64748b;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+#prompt {
+    width: 100%;
+    resize: vertical;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.6;
+    outline: none;
+}
+
+#prompt:focus {
+    border-color: #2563eb;
+}
+
+.prompt-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 12px;
+}
+
+#characterCount {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.generate-button,
+.download-button,
+.secondary-button {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.generate-button {
+    background: #2563eb;
+    color: white;
+}
+
+.generate-button:hover {
+    opacity: 0.9;
+}
+
+.generate-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.examples {
+    margin-top: 20px;
+}
+
+.examples p {
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.example-button {
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+    border-radius: 7px;
+    padding: 8px 12px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.example-button:hover {
+    background: #e2e8f0;
+}
+
+.status {
+    min-height: 24px;
+    margin: 12px 0;
+    font-weight: bold;
+}
+
+.status.success {
+    color: #16a34a;
+}
+
+.status.error {
+    color: #dc2626;
+}
+
+.status.loading {
+    color: #d97706;
+}
+
+.result-card {
+    animation: appear 0.3s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.result-header p {
+    color: #64748b;
+    line-height: 1.5;
+    max-width: 700px;
+    word-break: break-word;
+}
+
+.ai-badge {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/*
+    IMPORTANT:
+    Generated image preview is intentionally
+    limited in size.
+
+    The actual generated file can be large,
+    but it will NOT cover the entire page.
+*/
+
+.image-preview-container {
+    width: min(600px, 100%);
+    height: 500px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.generated-image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.image-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.download-button {
+    background: #16a34a;
+    color: white;
+}
+
+.download-button:hover {
+    opacity: 0.9;
+}
+
+.secondary-button {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.secondary-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.tips {
+    background: #f8fafc;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+    gap: 15px;
+}
+
+.tips-grid div {
+    padding: 15px;
+    background: white;
+    border-radius: 9px;
+    border: 1px solid #e2e8f0;
+}
+
+.tips-grid strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.tips-grid p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 750px) {
+
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .prompt-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .generate-button {
+        width: 100%;
+    }
+
+    .result-header {
+        flex-direction: column;
+    }
+
+    .image-preview-container {
+        height: 350px;
+    }
+
+    .image-actions {
+        flex-direction: column;
+    }
+
+    .download-button,
+    .secondary-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
