@@ -1,0 +1,171 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.container {
+    width: min(900px, 92%);
+    margin: 40px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #64748b;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.voice-section {
+    text-align: center;
+}
+
+.description {
+    color: #64748b;
+}
+
+.microphone-container {
+    margin: 35px 0 15px;
+}
+
+.record-button {
+    width: 90px;
+    height: 90px;
+    border: none;
+    border-radius: 50%;
+    font-size: 36px;
+    cursor: pointer;
+    background: #e2e8f0;
+    transition: 0.2s;
+}
+
+.record-button:hover {
+    transform: scale(1.05);
+}
+
+.record-button.recording {
+    background: #fecaca;
+    transform: scale(1.08);
+}
+
+#recordStatus {
+    margin-top: 18px;
+    color: #475569;
+}
+
+.recording-timer {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.workflow {
+    margin-top: 35px;
+}
+
+.workflow h2 {
+    text-align: center;
+}
+
+.workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.workflow-step {
+    padding: 15px 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    text-align: center;
+    background: #f8fafc;
+    transition: 0.2s;
+}
+
+.workflow-step span {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.workflow-step strong {
+    font-size: 13px;
+}
+
+.workflow-step.active {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.workflow-step.complete {
+    border-color: #16a34a;
+    background: #f0fdf4;
+}
+
+.result-section {
+    margin-top: 30px;
+}
+
+.text-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 18px;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+.audio-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.audio-section audio {
+    width: min(600px, 100%);
+}
+
+.error-box {
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 10px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+
+.error-box h3 {
+    margin-top: 0;
+}
+
+@media (max-width: 700px) {
+    .workflow-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}

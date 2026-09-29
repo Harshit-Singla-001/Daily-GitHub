@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Speech AI Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>🎙️ Speech AI Assistant</h1>
+
+        <p>
+            Speech → Text → AI → Speech
+        </p>
+    </header>
+
+    <main class="card">
+
+        <section class="voice-section">
+
+            <h2>Talk to the AI</h2>
+
+            <p class="description">
+                Click the microphone, speak your question,
+                then click Stop.
+            </p>
+
+            <div class="microphone-container">
+
+                <button
+                    id="recordButton"
+                    class="record-button"
+                    type="button"
+                >
+                    🎤
+                </button>
+
+                <p id="recordStatus">
+                    Click to start recording
+                </p>
+
+            </div>
+
+            <div
+                id="recordingTimer"
+                class="recording-timer hidden"
+            >
+                00:00
+            </div>
+
+        </section>
+
+        <section
+            id="workflow"
+            class="workflow hidden"
+        >
+
+            <h2>AI Workflow</h2>
+
+            <div class="workflow-steps">
+
+                <div
+                    id="stepRecording"
+                    class="workflow-step"
+                >
+                    <span>1</span>
+                    <strong>Recording</strong>
+                </div>
+
+                <div
+                    id="stepSTT"
+                    class="workflow-step"
+                >
+                    <span>2</span>
+                    <strong>Speech → Text</strong>
+                </div>
+
+                <div
+                    id="stepLLM"
+                    class="workflow-step"
+                >
+                    <span>3</span>
+                    <strong>LLM Processing</strong>
+                </div>
+
+                <div
+                    id="stepTTS"
+                    class="workflow-step"
+                >
+                    <span>4</span>
+                    <strong>Text → Speech</strong>
+                </div>
+
+                <div
+                    id="stepComplete"
+                    class="workflow-step"
+                >
+                    <span>5</span>
+                    <strong>Complete</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section
+            id="transcriptSection"
+            class="result-section hidden"
+        >
+
+            <h2>📝 You Said</h2>
+
+            <div
+                id="transcript"
+                class="text-box"
+            ></div>
+
+        </section>
+
+        <section
+            id="responseSection"
+            class="result-section hidden"
+        >
+
+            <h2>🤖 AI Response</h2>
+
+            <div
+                id="response"
+                class="text-box"
+            ></div>
+
+        </section>
+
+        <section
+            id="audioSection"
+            class="audio-section hidden"
+        >
+
+            <h2>🔊 AI Voice</h2>
+
+            <audio
+                id="audioPlayer"
+                controls
+            ></audio>
+
+        </section>
+
+        <section
+            id="errorSection"
+            class="error-box hidden"
+        >
+
+            <h3>Something went wrong</h3>
+
+            <p id="errorMessage"></p>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>
