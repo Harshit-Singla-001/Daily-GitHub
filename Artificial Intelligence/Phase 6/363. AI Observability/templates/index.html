@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Observability Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div>
+            <p class="eyebrow">DAY 363</p>
+            <h1>AI Observability</h1>
+            <p class="subtitle">
+                Monitor latency, tokens, errors and AI application performance.
+            </p>
+        </div>
+        <button id="refreshButton" class="secondary-button">
+            ↻ Refresh
+        </button>
+    </header>
+
+    <main class="container">
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Ask AI</h2>
+                    <p>Send a request and observe what happens behind the scenes.</p>
+                </div>
+            </div>
+
+            <textarea
+                id="userInput"
+                maxlength="2000"
+                placeholder="Ask something like: Explain machine learning in simple terms."
+            ></textarea>
+
+            <div class="input-footer">
+                <span id="characterCount">0 / 2000</span>
+                <button id="askButton" class="primary-button">
+                    Ask AI
+                </button>
+            </div>
+
+            <div id="askLoading" class="loading hidden">
+                <div class="spinner"></div>
+                <span>AI is processing your request...</span>
+            </div>
+
+            <div id="askError" class="error-box hidden">
+    <strong id="errorTitle">AI Request Failed</strong>
+    <p id="errorMessage"></p>
+    <div class="error-meta">
+        <span>
+            Request ID:
+            <strong id="errorRequestId">-</strong>
+        </span>
+        <span>
+            Error Type:
+            <strong id="errorType">-</strong>
+        </span>
+        <span>
+            Latency:
+            <strong id="errorLatency">-</strong>
+        </span>
+    </div>
+</div>
+
+            <div id="responseSection" class="response-section hidden">
+                <div class="response-header">
+                    <h3>AI Response</h3>
+                    <span id="statusBadge" class="badge success">
+                        SUCCESS
+                    </span>
+                </div>
+
+                <div id="aiResponse" class="response-text"></div>
+
+                <div class="request-meta">
+                    <div>
+                        <span>Request ID</span>
+                        <strong id="requestId">-</strong>
+                    </div>
+                    <div>
+                        <span>Model</span>
+                        <strong id="modelName">-</strong>
+                    </div>
+                    <div>
+                        <span>Latency</span>
+                        <strong id="requestLatency">-</strong>
+                    </div>
+                    <div>
+                        <span>Total Tokens</span>
+                        <strong id="requestTokens">-</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-label">Total Requests</span>
+                <strong id="totalRequests">0</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Successful</span>
+                <strong id="successfulRequests">0</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Failed</span>
+                <strong id="failedRequests">0</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Success Rate</span>
+                <strong id="successRate">0%</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Error Rate</span>
+                <strong id="errorRate">0%</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Average Latency</span>
+                <strong id="averageLatency">0 ms</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Min Latency</span>
+                <strong id="minimumLatency">0 ms</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Max Latency</span>
+                <strong id="maximumLatency">0 ms</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Total Tokens</span>
+                <strong id="totalTokens">0</strong>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">Average Tokens</span>
+                <strong id="averageTokens">0</strong>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Recent AI Requests</h2>
+                    <p>Latest requests recorded by the observability system.</p>
+                </div>
+                <button id="refreshRequestsButton" class="secondary-button">
+                    Refresh
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Request ID</th>
+                            <th>Model</th>
+                            <th>Latency</th>
+                            <th>Tokens</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestsTableBody">
+                        <tr>
+                            <td colspan="6" class="empty-row">
+                                No requests yet.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="detailsPanel" class="panel hidden">
+            <div class="panel-header">
+                <div>
+                    <h2>Request Details</h2>
+                    <p>Complete observability information for the selected request.</p>
+                </div>
+                <button id="closeDetailsButton" class="secondary-button">
+                    Close
+                </button>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span>Request ID</span>
+                    <strong id="detailRequestId">-</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Timestamp</span>
+                    <strong id="detailTimestamp">-</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Model</span>
+                    <strong id="detailModel">-</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Status</span>
+                    <strong id="detailStatus">-</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Latency</span>
+                    <strong id="detailLatency">-</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Input Tokens</span>
+                    <strong id="detailInputTokens">-</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Output Tokens</span>
+                    <strong id="detailOutputTokens">-</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Total Tokens</span>
+                    <strong id="detailTotalTokens">-</strong>
+                </div>
+            </div>
+
+            <div class="text-detail">
+                <h3>User Input</h3>
+                <pre id="detailInput">-</pre>
+            </div>
+
+            <div class="text-detail">
+                <h3>AI Response</h3>
+                <pre id="detailResponse">-</pre>
+            </div>
+
+            <div id="detailErrorSection" class="text-detail error-detail hidden">
+                <h3>Error</h3>
+                <p>
+                    <strong id="detailErrorType">-</strong>
+                </p>
+                <pre id="detailErrorMessage">-</pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>AI Observability • Day 363</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

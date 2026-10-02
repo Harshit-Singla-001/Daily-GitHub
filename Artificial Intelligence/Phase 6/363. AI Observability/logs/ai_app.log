@@ -1,0 +1,49 @@
+2026-10-02 14:36:30,986 | INFO | Request 1d75568f0206 started | model=gemini-3.6-flash
+2026-10-02 14:36:32,685 | ERROR | Request 1d75568f0206 failed | latency=1691.02ms
+Traceback (most recent call last):
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\363. AI Observability\ai_service.py", line 125, in generate_response
+    response = client.models.generate_content(
+        model=MODEL,
+        contents=prompt
+    )
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\models.py", line 6270, in generate_content
+    response = self._generate_content(
+        model=model, contents=contents, config=parsed_config_to_call
+    )
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\models.py", line 4707, in _generate_content
+    response = self._api_client.request(
+        'post', path, request_dict, http_options
+    )
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\_api_client.py", line 1747, in request
+    response = self._request(http_request, http_options, stream=False)
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\_api_client.py", line 1534, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\_base.py", line 447, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\_base.py", line 396, in __get_result
+    raise self._exception
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\_api_client.py", line 1511, in _request_once
+    errors.APIError.raise_for_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\errors.py", line 173, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\errors.py", line 204, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-10-02 14:47:08,163 | INFO | Request 6abc3c2a3d9c started | model=gemini-3.6-flash
+2026-10-02 14:47:15,660 | INFO | Request 6abc3c2a3d9c completed | latency=7487.61ms | input_tokens=87 | output_tokens=274 | thinking_tokens=636 | total_tokens=997
