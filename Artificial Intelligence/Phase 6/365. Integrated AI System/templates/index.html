@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>AI Knowledge & Productivity Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>🤖 AI Knowledge & Productivity Assistant</h1>
+        <p>
+            Gemini + RAG + Tools + Memory + Document Intelligence
+        </p>
+    </div>
+
+    <button
+        id="clearHistoryButton"
+        class="secondary-button"
+    >
+        Clear History
+    </button>
+</header>
+
+
+<main class="layout">
+
+    <aside class="sidebar">
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>📄 Knowledge Base</h2>
+            </div>
+
+            <p class="panel-description">
+                Upload TXT, PDF, DOCX or CSV files.
+                They will be processed and added to the RAG knowledge base.
+            </p>
+
+            <input
+                type="file"
+                id="documentInput"
+                accept=".txt,.pdf,.docx,.csv"
+            >
+
+            <button
+                id="uploadButton"
+                class="primary-button full-width"
+            >
+                Upload Document
+            </button>
+
+            <div
+                id="uploadStatus"
+                class="status-box hidden"
+            ></div>
+
+            <div class="document-list-header">
+                <strong>Documents</strong>
+                <button
+                    id="refreshDocumentsButton"
+                    class="small-button"
+                >
+                    Refresh
+                </button>
+            </div>
+
+            <div
+                id="documentList"
+                class="document-list"
+            >
+                <div class="empty-state">
+                    No documents loaded.
+                </div>
+            </div>
+        </section>
+
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>🧠 Conversation Memory</h2>
+            </div>
+
+            <div class="memory-status">
+                <span>Messages</span>
+                <strong id="memoryCount">0</strong>
+            </div>
+
+            <div
+                id="historyPreview"
+                class="history-preview"
+            ></div>
+        </section>
+
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>🛠️ Available Tools</h2>
+            </div>
+
+            <div class="tool-list">
+                <div class="tool-item">
+                    <span>🧮</span>
+                    <div>
+                        <strong>Calculator</strong>
+                        <small>Safe mathematical calculations</small>
+                    </div>
+                </div>
+
+                <div class="tool-item">
+                    <span>🗄️</span>
+                    <div>
+                        <strong>Database</strong>
+                        <small>Read-only database queries</small>
+                    </div>
+                </div>
+
+                <div class="tool-item">
+                    <span>🔎</span>
+                    <div>
+                        <strong>File Search</strong>
+                        <small>Search local knowledge files</small>
+                    </div>
+                </div>
+
+                <div class="tool-item">
+                    <span>📚</span>
+                    <div>
+                        <strong>RAG</strong>
+                        <small>Semantic document retrieval</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </aside>
+
+
+    <section class="chat-panel">
+
+        <div
+            id="chatMessages"
+            class="chat-messages"
+        >
+            <div class="welcome-card">
+                <div class="welcome-icon">
+                    🤖
+                </div>
+
+                <h2>
+                    Welcome to your AI Assistant
+                </h2>
+
+                <p>
+                    Ask questions, upload documents,
+                    perform calculations, search your database
+                    and continue conversations using memory.
+                </p>
+
+                <div class="example-grid">
+
+                    <button
+                        class="example-button"
+                        data-example="Explain artificial intelligence in simple terms."
+                    >
+                        💡 Ask a question
+                    </button>
+
+                    <button
+                        class="example-button"
+                        data-example="Calculate (125 * 48) / 6"
+                    >
+                        🧮 Use calculator
+                    </button>
+
+                    <button
+                        class="example-button"
+                        data-example="Show all products."
+                    >
+                        🗄️ Search database
+                    </button>
+
+                    <button
+                        class="example-button"
+                        data-example="According to my documents, what is overfitting?"
+                    >
+                        📚 Ask documents
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div
+            id="errorBox"
+            class="error-box hidden"
+        >
+            <div class="error-title">
+                ⚠️ Request Failed
+            </div>
+
+            <p id="errorMessage"></p>
+
+            <div class="error-meta">
+                <span>
+                    Type:
+                    <strong id="errorType">-</strong>
+                </span>
+
+                <span>
+                    Request:
+                    <strong id="errorRequestId">-</strong>
+                </span>
+            </div>
+        </div>
+
+
+        <div class="composer">
+
+            <textarea
+                id="userInput"
+                rows="3"
+                maxlength="3000"
+                placeholder="Ask anything..."
+            ></textarea>
+
+            <div class="composer-footer">
+
+                <span id="characterCount">
+                    0 / 3000
+                </span>
+
+                <button
+                    id="askButton"
+                    class="primary-button"
+                >
+                    Ask AI
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<section class="dashboard">
+
+    <div class="dashboard-header">
+        <div>
+            <h2>📊 System Observability</h2>
+            <p>
+                Monitor requests, latency and token usage.
+            </p>
+        </div>
+
+        <button
+            id="refreshDashboardButton"
+            class="secondary-button"
+        >
+            Refresh
+        </button>
+    </div>
+
+
+    <div class="metrics-grid">
+
+        <div class="metric-card">
+            <span>Total Requests</span>
+            <strong id="totalRequests">0</strong>
+        </div>
+
+        <div class="metric-card">
+            <span>Successful</span>
+            <strong id="successfulRequests">0</strong>
+        </div>
+
+        <div class="metric-card">
+            <span>Failed</span>
+            <strong id="failedRequests">0</strong>
+        </div>
+
+        <div class="metric-card">
+            <span>Success Rate</span>
+            <strong id="successRate">0%</strong>
+        </div>
+
+        <div class="metric-card">
+            <span>Average Latency</span>
+            <strong id="averageLatency">0 ms</strong>
+        </div>
+
+        <div class="metric-card">
+            <span>Total Tokens</span>
+            <strong id="totalTokens">0</strong>
+        </div>
+
+    </div>
+
+
+    <div class="requests-panel">
+
+        <div class="dashboard-header">
+            <h3>Recent Requests</h3>
+
+            <button
+                id="refreshRequestsButton"
+                class="small-button"
+            >
+                Refresh
+            </button>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Request</th>
+                        <th>Status</th>
+                        <th>Latency</th>
+                        <th>Tokens</th>
+                        <th>RAG</th>
+                        <th>Memory</th>
+                        <th>Tools</th>
+                    </tr>
+                </thead>
+
+                <tbody id="requestsTableBody">
+                    <tr>
+                        <td colspan="7">
+                            No requests yet.
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+></script>
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>

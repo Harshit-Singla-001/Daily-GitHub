@@ -1,0 +1,28 @@
+2026-10-02 20:02:16,772 | INFO | Request 4b509747ec48 | capability=direct
+2026-10-02 20:02:16,772 | INFO | Request 1027d6ca91a5 started | model=gemini-3.6-flash
+2026-10-02 20:02:16,772 | INFO | Request 1027d6ca91a5 | Gemini attempt 1/3
+2026-10-02 20:02:19,110 | WARNING | Request 1027d6ca91a5 | attempt 1 failed | retryable=False | error=save_request() got an unexpected keyword argument 'timestamp'
+2026-10-02 20:02:19,110 | ERROR | Request 4b509747ec48 failed
+Traceback (most recent call last):
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\365. Integrated AI System\assistant.py", line 387, in run_assistant
+    response = generate_response(
+        validated_input,
+    ...<2 lines>...
+        tool_context=tool_context
+    )
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\365. Integrated AI System\ai_service.py", line 440, in generate_response
+    save_request(
+    ~~~~~~~~~~~~^
+        request_id=request_id,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        error_message=raw_error_message
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: save_request() got an unexpected keyword argument 'timestamp'
+2026-10-02 20:07:11,093 | INFO | Request a11a3da1a914 | capability=direct
+2026-10-02 20:07:11,093 | INFO | Request 836b1854b5c2 started | model=gemini-3.6-flash
+2026-10-02 20:07:11,093 | INFO | Request 836b1854b5c2 | Gemini attempt 1/3
+2026-10-02 20:07:13,722 | INFO | Request 836b1854b5c2 completed | latency=2620.52ms | input_tokens=297 | output_tokens=9 | total_tokens=414
+2026-10-02 20:07:13,744 | INFO | Request a11a3da1a914 completed | latency=2646.43ms
