@@ -1,0 +1,23 @@
+Python
+
+Python is a high-level general-purpose programming language.
+
+Python supports procedural, object-oriented and functional programming.
+
+A function is a reusable block of code designed to perform a particular task.
+
+A class is a blueprint for creating objects.
+
+Inheritance allows a class to reuse properties and methods of another class.
+
+Encapsulation combines data and methods and controls how they are accessed.
+
+Polymorphism allows the same interface to behave differently for different objects.
+
+Python lists are ordered and mutable collections.
+
+Tuples are ordered but immutable collections.
+
+Dictionaries store data using key-value pairs.
+
+Exceptions can be handled using try, except, else and finally.

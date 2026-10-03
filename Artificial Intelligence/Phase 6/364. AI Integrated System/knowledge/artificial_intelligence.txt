@@ -1,0 +1,17 @@
+Artificial Intelligence
+
+Artificial Intelligence is the field of computer science concerned with creating systems capable of performing tasks that normally require human intelligence.
+
+Important AI areas include machine learning, natural language processing, computer vision, robotics and intelligent agents.
+
+An intelligent agent perceives its environment and takes actions to achieve goals.
+
+Search algorithms can be used by AI systems to find paths or solutions.
+
+Uninformed search algorithms do not use domain-specific heuristic information.
+
+Breadth-first search and depth-first search are examples of uninformed search.
+
+Informed search uses additional knowledge about the problem. A* search is an important informed search algorithm.
+
+Generative AI systems can create text, images, audio and other content based on learned patterns.

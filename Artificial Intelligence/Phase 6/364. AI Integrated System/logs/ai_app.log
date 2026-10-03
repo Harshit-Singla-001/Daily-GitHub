@@ -1,0 +1,124 @@
+2026-10-02 19:12:23,631 | INFO | Request 6864e568d386 | capability=direct
+2026-10-02 19:12:25,078 | ERROR | Request 6864e568d386 failed
+Traceback (most recent call last):
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\364. AI Integrated System\assistant.py", line 343, in run_assistant
+    response = generate_response(
+        validated_input,
+    ...<2 lines>...
+        tool_context=tool_context
+    )
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\364. AI Integrated System\ai_service.py", line 66, in generate_response
+    response = client.models.generate_content(
+        model=MODEL,
+        contents=prompt
+    )
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\models.py", line 6270, in generate_content
+    response = self._generate_content(
+        model=model, contents=contents, config=parsed_config_to_call
+    )
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\models.py", line 4707, in _generate_content
+    response = self._api_client.request(
+        'post', path, request_dict, http_options
+    )
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\_api_client.py", line 1747, in request
+    response = self._request(http_request, http_options, stream=False)
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\_api_client.py", line 1534, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\_base.py", line 447, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\_base.py", line 396, in __get_result
+    raise self._exception
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\_api_client.py", line 1511, in _request_once
+    errors.APIError.raise_for_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\errors.py", line 173, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Harshit Singla\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\errors.py", line 204, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-10-02 19:28:55,062 | INFO | Request d3acafd7ea0b | capability=direct
+2026-10-02 19:28:55,063 | INFO | Request e716ea1d3526 started | model=gemini-3.6-flash
+2026-10-02 19:28:55,063 | INFO | Request e716ea1d3526 | Gemini attempt 1/3
+2026-10-02 19:29:03,841 | WARNING | Request e716ea1d3526 | attempt 1 failed | retryable=False | error=save_request() got an unexpected keyword argument 'timestamp'
+2026-10-02 19:29:03,841 | ERROR | Request d3acafd7ea0b failed
+Traceback (most recent call last):
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\364. AI Integrated System\assistant.py", line 343, in run_assistant
+    response = generate_response(
+        validated_input,
+    ...<2 lines>...
+        tool_context=tool_context
+    )
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\364. AI Integrated System\ai_service.py", line 440, in generate_response
+    save_request(
+    ~~~~~~~~~~~~^
+        request_id=request_id,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        error_message=raw_error_message
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: save_request() got an unexpected keyword argument 'timestamp'
+2026-10-02 19:33:38,965 | INFO | Request 6d8e834fcee2 | capability=direct
+2026-10-02 19:33:38,965 | INFO | Request c4a90b04fa5c started | model=gemini-3.6-flash
+2026-10-02 19:33:38,965 | INFO | Request c4a90b04fa5c | Gemini attempt 1/3
+2026-10-02 19:33:48,344 | WARNING | Request c4a90b04fa5c | attempt 1 failed | retryable=False | error=table ai_requests has no column named thinking_tokens
+2026-10-02 19:33:48,346 | ERROR | Request 6d8e834fcee2 failed
+Traceback (most recent call last):
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\364. AI Integrated System\assistant.py", line 343, in run_assistant
+    response = generate_response(
+        validated_input,
+    ...<2 lines>...
+        tool_context=tool_context
+    )
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\364. AI Integrated System\ai_service.py", line 440, in generate_response
+    save_request(
+    ~~~~~~~~~~~~^
+        request_id=request_id,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        error_message=raw_error_message
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\364. AI Integrated System\observability.py", line 116, in save_request
+    connection.execute(
+    ~~~~~~~~~~~~~~~~~~^
+        """
+        ^^^
+    ...<31 lines>...
+        )
+        ^
+    )
+    ^
+sqlite3.OperationalError: table ai_requests has no column named thinking_tokens
+2026-10-02 19:35:58,586 | INFO | Request beaa9d909426 | capability=direct
+2026-10-02 19:35:58,587 | INFO | Request 018e36fe6213 started | model=gemini-3.6-flash
+2026-10-02 19:35:58,587 | INFO | Request 018e36fe6213 | Gemini attempt 1/3
+2026-10-02 19:36:00,853 | INFO | Request 018e36fe6213 completed | latency=2256.95ms | input_tokens=243 | output_tokens=9 | total_tokens=358
+2026-10-02 19:36:00,854 | ERROR | Request beaa9d909426 failed
+Traceback (most recent call last):
+  File "d:\Daily-GitHub\Artificial Intelligence\Phase 6\364. AI Integrated System\assistant.py", line 351, in run_assistant
+    response["text"]
+    ~~~~~~~~^^^^^^^^
+KeyError: 'text'
+2026-10-02 19:40:48,605 | INFO | Request bc12e0acefb4 | capability=direct
+2026-10-02 19:40:48,605 | INFO | Request 39a93b3cf5bd started | model=gemini-3.6-flash
+2026-10-02 19:40:48,606 | INFO | Request 39a93b3cf5bd | Gemini attempt 1/3
+2026-10-02 19:40:51,166 | INFO | Request 39a93b3cf5bd completed | latency=2551.39ms | input_tokens=243 | output_tokens=9 | total_tokens=393
+2026-10-02 19:40:51,195 | INFO | Request bc12e0acefb4 completed | capability=direct | latency=2586.21ms | input_tokens=243 | output_tokens=9 | total_tokens=393

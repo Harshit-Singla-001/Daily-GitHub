@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>AI Knowledge & Productivity Assistant</title>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div>
+            <h1>🤖 AI Knowledge & Productivity Assistant</h1>
+            <p>
+                Flask + Gemini + RAG + Tools + Memory
+            </p>
+        </div>
+    </header>
+
+    <section class="chat-card">
+
+        <div class="section-title">
+            <h2>💬 AI Assistant</h2>
+            <span id="sessionStatus">
+                Session Active
+            </span>
+        </div>
+
+        <div
+            id="chatMessages"
+            class="chat-messages"
+        >
+            <div class="welcome-message">
+                <h3>👋 Welcome!</h3>
+                <p>
+                    Ask a normal question, search your
+                    knowledge base, calculate something,
+                    search files or access database data.
+                </p>
+            </div>
+        </div>
+
+        <div class="input-area">
+
+            <textarea
+                id="userInput"
+                placeholder="Ask anything..."
+                rows="4"
+            ></textarea>
+
+            <div class="input-actions">
+                <span>
+                    Ctrl + Enter to send
+                </span>
+
+                <button
+                    id="askButton"
+                    class="primary-button"
+                >
+                    Ask AI
+                </button>
+            </div>
+
+        </div>
+
+        <div
+            id="errorBox"
+            class="error-box hidden"
+        >
+            <strong>⚠️ Request Failed</strong>
+            <p id="errorMessage"></p>
+
+            <div class="error-meta">
+                <span>
+                    Request:
+                    <strong id="errorRequestId">-</strong>
+                </span>
+
+                <span>
+                    Type:
+                    <strong id="errorType">-</strong>
+                </span>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="grid">
+
+        <div class="card">
+
+            <div class="card-header">
+                <h2>📚 Knowledge Base</h2>
+                <button
+                    id="refreshDocuments"
+                    class="small-button"
+                >
+                    Refresh
+                </button>
+            </div>
+
+            <p class="muted">
+                Upload TXT, PDF, DOCX or CSV documents.
+            </p>
+
+            <input
+                type="file"
+                id="documentInput"
+                accept=".txt,.pdf,.docx,.csv"
+            >
+
+            <button
+                id="uploadButton"
+                class="secondary-button"
+            >
+                Upload Document
+            </button>
+
+            <div
+                id="uploadStatus"
+                class="status-box hidden"
+            ></div>
+
+            <div
+                id="documentList"
+                class="document-list"
+            ></div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-header">
+                <h2>🧠 Memory</h2>
+
+                <button
+                    id="refreshMemory"
+                    class="small-button"
+                >
+                    Refresh
+                </button>
+            </div>
+
+            <div
+                id="memoryList"
+                class="memory-list"
+            >
+                No memory loaded.
+            </div>
+
+            <button
+                id="clearMemory"
+                class="danger-button"
+            >
+                Clear Current Session Memory
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <div class="card-header">
+            <h2>📊 Observability</h2>
+
+            <button
+                id="refreshMetrics"
+                class="small-button"
+            >
+                Refresh
+            </button>
+        </div>
+
+        <div class="metrics-grid">
+
+            <div class="metric">
+                <span>Total Requests</span>
+                <strong id="totalRequests">0</strong>
+            </div>
+
+            <div class="metric">
+                <span>Successful</span>
+                <strong id="successfulRequests">0</strong>
+            </div>
+
+            <div class="metric">
+                <span>Failed</span>
+                <strong id="failedRequests">0</strong>
+            </div>
+
+            <div class="metric">
+                <span>Success Rate</span>
+                <strong id="successRate">0%</strong>
+            </div>
+
+            <div class="metric">
+                <span>Average Latency</span>
+                <strong id="averageLatency">0 ms</strong>
+            </div>
+
+            <div class="metric">
+                <span>Total Tokens</span>
+                <strong id="totalTokens">0</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <div class="card-header">
+            <h2>📝 Recent Requests</h2>
+
+            <button
+                id="refreshRequests"
+                class="small-button"
+            >
+                Refresh
+            </button>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Status</th>
+                        <th>Latency</th>
+                        <th>Tokens</th>
+                        <th>RAG</th>
+                        <th>Memory</th>
+                        <th>Tools</th>
+                    </tr>
+                </thead>
+
+                <tbody id="requestsTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>
