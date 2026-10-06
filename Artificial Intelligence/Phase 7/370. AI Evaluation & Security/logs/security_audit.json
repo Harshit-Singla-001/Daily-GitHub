@@ -1,0 +1,29 @@
+[
+    {
+        "question": "hi",
+        "evaluation": {
+            "relevance_score": 100.0,
+            "groundedness": {
+                "score": 0.0,
+                "status": "POTENTIAL_HALLUCINATION",
+                "reason": "The answer was compared with the provided trusted context."
+            },
+            "overall_score": 50.0,
+            "quality": "NEEDS_REVIEW"
+        },
+        "security": {
+            "risk_score": 0,
+            "risk_level": "LOW",
+            "prompt_injection": [],
+            "sensitive_data": [],
+            "unsafe_tools": [],
+            "final_risk_score": 20
+        },
+        "output_validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+        },
+        "timestamp": "2026-10-05T19:59:45.925748"
+    }
+]

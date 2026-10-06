@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Evaluation & Security Lab
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div>
+            <p class="eyebrow">
+                AI SECURITY LAB
+            </p>
+
+            <h1>
+                AI Evaluation & Security
+            </h1>
+
+            <p class="subtitle">
+                Evaluate AI responses for quality,
+                hallucination, prompt injection,
+                data leakage and unsafe behavior.
+            </p>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            System Ready
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>
+                        Evaluation Input
+                    </h2>
+
+                    <p>
+                        Provide a question, trusted context
+                        and the AI's response.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <label for="question">
+                User Question
+            </label>
+
+            <textarea
+                id="question"
+                placeholder="Example: Who created Python?"
+            ></textarea>
+
+
+            <label for="context">
+                Trusted Context
+            </label>
+
+            <textarea
+                id="context"
+                placeholder="Example: Python was created by Guido van Rossum."
+            ></textarea>
+
+
+            <label for="answer">
+                AI Response
+            </label>
+
+            <textarea
+                id="answer"
+                placeholder="Example: Python was created by Guido van Rossum."
+            ></textarea>
+
+
+            <div class="actions">
+
+                <button
+                    id="evaluateButton"
+                    onclick="evaluateAI()"
+                >
+                    Evaluate AI Response
+                </button>
+
+                <button
+                    class="secondary"
+                    onclick="loadSafeExample()"
+                >
+                    Safe Example
+                </button>
+
+                <button
+                    class="danger-button"
+                    onclick="loadAttackExample()"
+                >
+                    Attack Example
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="results"
+            class="results hidden"
+        >
+
+            <div class="dashboard-grid">
+
+                <div class="metric-card">
+
+                    <span>
+                        Overall Quality
+                    </span>
+
+                    <strong id="quality">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <span>
+                        Evaluation Score
+                    </span>
+
+                    <strong id="overallScore">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <span>
+                        Risk Score
+                    </span>
+
+                    <strong id="riskScore">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <span>
+                        Risk Level
+                    </span>
+
+                    <strong id="riskLevel">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="card">
+
+                    <h2>
+                        Response Evaluation
+                    </h2>
+
+                    <div class="result-row">
+                        <span>
+                            Relevance
+                        </span>
+
+                        <strong id="relevance">
+                            -
+                        </strong>
+                    </div>
+
+
+                    <div class="result-row">
+                        <span>
+                            Groundedness
+                        </span>
+
+                        <strong id="groundedness">
+                            -
+                        </strong>
+                    </div>
+
+
+                    <div class="result-row">
+                        <span>
+                            Grounding Score
+                        </span>
+
+                        <strong id="groundingScore">
+                            -
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h2>
+                        Security Checks
+                    </h2>
+
+                    <div class="check" id="injectionCheck">
+                        Prompt Injection
+                    </div>
+
+                    <div class="check" id="dataCheck">
+                        Data Leakage
+                    </div>
+
+                    <div class="check" id="toolCheck">
+                        Unsafe Tool Usage
+                    </div>
+
+                    <div class="check" id="outputCheck">
+                        Output Validation
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>
+                    Security Findings
+                </h2>
+
+                <div id="findings">
+                    No findings.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        AI Evaluation & Security Lab · Day 370
+    </footer>
+
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
+</body>
+
+</html>
