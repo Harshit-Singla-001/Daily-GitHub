@@ -1,0 +1,30 @@
+services:
+
+  ai-mlops:
+
+    build: .
+
+    container_name: ai-mlops-service
+
+    ports:
+      - "5000:5000"
+
+    environment:
+
+      APP_NAME: AI MLOps Service
+
+      MODEL_NAME: sentiment-model
+
+      MODEL_VERSION: "1.0.0"
+
+      LOG_LEVEL: INFO
+
+      PORT: 5000
+
+      DEBUG: "false"
+
+      ENVIRONMENT: production
+
+      MAX_TEXT_LENGTH: 2000
+
+    restart: unless-stopped

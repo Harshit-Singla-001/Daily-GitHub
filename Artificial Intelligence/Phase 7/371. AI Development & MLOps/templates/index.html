@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI MLOps Monitor
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/style.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div>
+
+        <p class="eyebrow">
+            DAY 371 · MLOps
+        </p>
+
+        <h1>
+            AI Deployment Monitor
+        </h1>
+
+        <p>
+            Monitor model version,
+            API health, prediction latency
+            and application metrics.
+        </p>
+
+    </div>
+
+    <div id="healthBadge"
+         class="badge">
+        Checking...
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="metrics-grid">
+
+        <div class="metric">
+
+            <span>
+                Requests
+            </span>
+
+            <strong id="requests">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="metric">
+
+            <span>
+                Success
+            </span>
+
+            <strong id="success">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="metric">
+
+            <span>
+                Errors
+            </span>
+
+            <strong id="errors">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="metric">
+
+            <span>
+                Avg Latency
+            </span>
+
+            <strong id="latency">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="metric">
+
+            <span>
+                Error Rate
+            </span>
+
+            <strong id="errorRate">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="metric">
+
+            <span>
+                Uptime
+            </span>
+
+            <strong id="uptime">
+                -
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <section class="grid">
+
+        <div class="card">
+
+            <h2>
+                Model Information
+            </h2>
+
+            <div class="info-row">
+                <span>Name</span>
+                <strong id="modelName">-</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Version</span>
+                <strong id="modelVersion">-</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Environment</span>
+                <strong id="environment">-</strong>
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                Test Prediction
+            </h2>
+
+            <textarea
+                id="text"
+                placeholder="Example: This product is amazing!"
+            ></textarea>
+
+            <button onclick="predict()">
+                Run Prediction
+            </button>
+
+            <div
+                id="prediction"
+                class="prediction"
+            >
+                No prediction yet.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Production Concepts
+                </h2>
+
+                <p>
+                    The dashboard demonstrates the
+                    main MLOps concepts from Day 371.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="concept-grid">
+
+            <div>
+                <strong>
+                    Environment Variables
+                </strong>
+
+                <p>
+                    Configuration is separated
+                    from source code.
+                </p>
+            </div>
+
+
+            <div>
+                <strong>
+                    Logging
+                </strong>
+
+                <p>
+                    Requests and errors are
+                    recorded by the application.
+                </p>
+            </div>
+
+
+            <div>
+                <strong>
+                    Model Versioning
+                </strong>
+
+                <p>
+                    Every prediction identifies
+                    the active model version.
+                </p>
+            </div>
+
+
+            <div>
+                <strong>
+                    Monitoring
+                </strong>
+
+                <p>
+                    Requests, errors and latency
+                    are continuously tracked.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    AI Deployment & MLOps · Day 371
+</footer>
+
+
+<script
+    src="{{ url_for(
+        'static',
+        filename='js/script.js'
+    ) }}"
+></script>
+
+</body>
+
+</html>
