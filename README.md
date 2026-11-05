@@ -860,7 +860,7 @@ Daily-GitHub/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/Daily-GitHub.git
+git clone https://github.com/Harshit-Singla-001/Daily-GitHub.git
 cd Daily-GitHub
 ```
 
